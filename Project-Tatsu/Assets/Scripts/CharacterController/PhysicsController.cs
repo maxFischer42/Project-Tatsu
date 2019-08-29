@@ -12,6 +12,7 @@ public class PhysicsController : MonoBehaviour
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         setGravity(0);
     }
 

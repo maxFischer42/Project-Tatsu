@@ -16,11 +16,11 @@ public class ActionController : MonoBehaviour
 
     public void moveX(float value)
     {
-        physics.rigidbody.velocity = new Vector2(value * horizontalModifyer, 0);
+        physics.rigidbody.velocity = new Vector2(value * horizontalModifyer, physics.rigidbody.velocity.y);
     }
 
     public void moveY(float value)
     {
-        physics.rigidbody.velocity = new Vector2(0, value * verticalModifyer);
+        physics.rigidbody.velocity = new Vector2(physics.rigidbody.velocity.x, value * verticalModifyer);
     }
 }

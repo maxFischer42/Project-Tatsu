@@ -43,9 +43,12 @@ namespace Controller
         //checks whether the character's movement is equal to {0,0}
         void CheckMovement()
         {
-            if(movementInputs != Vector2.zero)
+            if(movementInputs.x != 0)
             {
                 actionController.moveX(movementInputs.x);
+            }
+            if(movementInputs.y != 0)
+            {
                 actionController.moveY(movementInputs.y);
             }
         }
