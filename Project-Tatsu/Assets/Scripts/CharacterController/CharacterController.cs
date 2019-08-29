@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StateData;
+using Inputs;
 
 namespace Controller
 {
@@ -12,27 +14,39 @@ namespace Controller
         public CharacterData data;
         private PhysicsController physicsController;
         private ActionController actionController;
+        private CharacterState.State state;
 
         void Start()
         {
             physicsController = GetComponent<PhysicsController>();
             actionController = GetComponent<ActionController>();
+            state = CharacterState.State.Idle;
+        }
+        /*
+        //TODO create a seperate input class and import it as variable
+        //'inputs' to hold more than just movement
+        this is controlled by an external character controller that is based off of whether
+        this character is being controlled by the player or by an AI
+        */
+        public Vector2 movementInputs = Vector2.zero; 
 
-            physicsController.setGravity(0);
+        public void SetInputs(InputController inputs)
+        {
+            movementInputs = inputs.direction;
         }
 
         public void Update()
         {
-            //testing relations between the components
-            float h = Input.GetAxisRaw("Horizontal");
-            float y = Input.GetAxisRaw("Vertical");
-            if(h != 0f)
+            CheckMovement();
+        }
+
+        //checks whether the character's movement is equal to {0,0}
+        void CheckMovement()
+        {
+            if(movementInputs != Vector2.zero)
             {
-                actionController.moveX(h);
-            }
-            if(y != 0f)
-            {
-                actionController.moveY(y);
+                actionController.moveX(movementInputs.x);
+                actionController.moveY(movementInputs.y);
             }
         }
     }

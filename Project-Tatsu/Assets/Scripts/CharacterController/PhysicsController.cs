@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Controller;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PhysicsController : MonoBehaviour
 {
     [HideInInspector]
@@ -10,13 +11,13 @@ public class PhysicsController : MonoBehaviour
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        setGravity(0);
     }
 
     public void setGravity(float gravity)
     {
         rigidbody.gravityScale = gravity;
     }
-
 
 }
