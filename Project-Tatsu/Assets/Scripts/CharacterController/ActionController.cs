@@ -16,7 +16,7 @@ public class ActionController : MonoBehaviour
 
     public void moveX(float value)
     {
-        physics.rigidbody.velocity = Vector2.zero;
+        physics.rigidbody.velocity = new Vector2(0f, physics.rigidbody.velocity.y);
         physics.rigidbody.velocity = new Vector2(value * horizontalModifyer, physics.rigidbody.velocity.y);
     }
 
@@ -24,5 +24,10 @@ public class ActionController : MonoBehaviour
     {
         physics.rigidbody.velocity = Vector2.zero;
         physics.rigidbody.velocity = new Vector2(physics.rigidbody.velocity.x, value * verticalModifyer);
+    }
+
+    public void jump(float force)
+    {
+        physics.rigidbody.AddForce(Vector2.up * force);
     }
 }

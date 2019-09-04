@@ -16,10 +16,13 @@ public class PhysicsController : MonoBehaviour
         bool grounded = false;
         float dis = controller.data.distanceToGround;
         LayerMask mask = controller.data.layersToDetect;
-        RaycastHit2D hit = Physics2D.Raycast(feetOrigin.position, -Vector2.up, dis, mask);
-        if(hit.collider.tag == "Ground")
+        var hit = Physics2D.Raycast(feetOrigin.position, Vector2.down, dis, mask);
+        if (hit.collider != null)
         {
-            grounded = true;
+            if(hit.collider.gameObject.tag == "Ground")
+            {
+                grounded = true;
+            }
         }
         return grounded;
     }
@@ -27,6 +30,7 @@ public class PhysicsController : MonoBehaviour
     void Start()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        controller = GetComponent<Controller.CharacterController>();
         rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         setGravity(controller.data.gravity);
     }

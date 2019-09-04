@@ -10,4 +10,5 @@ public class CharacterData : ScriptableObject
     public float gravity = 1f;
     public float distanceToGround = 0.1f;
     public LayerMask layersToDetect;
+    public float jumpForce = 50f;
 }

@@ -29,16 +29,19 @@ namespace Controller
         this is controlled by an external character controller that is based off of whether
         this character is being controlled by the player or by an AI
         */
-        public Vector2 movementInputs = Vector2.zero; 
+        public Vector2 movementInputs = Vector2.zero;
+        public bool actionInput1 = false;
 
         public void SetInputs(InputController inputs)
         {
             movementInputs = inputs.direction;
+            actionInput1 = inputs.action1;
         }
 
         public void Update()
         {
             CheckMovement();
+            isGrounded = physicsController.DetectGround();
         }
 
         //checks whether the character's movement is equal to {0,0}
@@ -48,9 +51,9 @@ namespace Controller
             {
                 actionController.moveX(movementInputs.x);
             }
-            if(movementInputs.y != 0)
+            if(actionInput1 && isGrounded)
             {
-                actionController.moveY(movementInputs.y);
+                actionController.jump(data.jumpForce);
             }
         }
     }
