@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 1ed914aa91c690e41a7e07a6436b8ad9, type: 2}
+  isGrounded: 0
   movementInputs: {x: 0, y: 0}
 --- !u!114 &978533740
 MonoBehaviour:
@@ -365,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
+  feetOrigin: {fileID: 0}
 --- !u!50 &978533742
 Rigidbody2D:
   serializedVersion: 4
@@ -1196,7 +1198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!70 &1491045844
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1287,6 +1289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 1ed914aa91c690e41a7e07a6436b8ad9, type: 2}
+  isGrounded: 0
   movementInputs: {x: 0, y: 0}
 --- !u!114 &1491045848
 MonoBehaviour:
@@ -1315,6 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
+  feetOrigin: {fileID: 0}
 --- !u!50 &1491045850
 Rigidbody2D:
   serializedVersion: 4
@@ -1523,7 +1527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1879782253
 Transform:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ namespace Controller
         private PhysicsController physicsController;
         private ActionController actionController;
         private CharacterState.State state;
+        public bool isGrounded;
 
         void Start()
         {

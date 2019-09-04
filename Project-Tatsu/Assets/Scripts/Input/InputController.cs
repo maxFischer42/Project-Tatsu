@@ -7,5 +7,6 @@ namespace Inputs
     public class InputController
     {
         public Vector2 direction;
+        public bool action1;
     }
 }
