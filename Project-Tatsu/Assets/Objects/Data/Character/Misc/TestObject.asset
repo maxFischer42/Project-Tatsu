@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TestObject
   m_EditorClassIdentifier: 
   characterName: edgeman silas
-  movement: 69.1
+  movement: 75
   gravity: 1
   distanceToGround: 0.2
   layersToDetect:
     serializedVersion: 2
     m_Bits: 256
-  jumpForce: 250
+  jumpForce: 80
