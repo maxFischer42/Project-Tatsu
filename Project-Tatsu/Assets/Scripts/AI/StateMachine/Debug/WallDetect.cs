@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Controller;
+using Inputs;
 
 public class WallDetect : MonoBehaviour
 {
@@ -9,26 +10,32 @@ public class WallDetect : MonoBehaviour
     public LayerMask layersToDetect;
     public float distance;
     public Transform center;
+    private InputController input;
+
+    private Controller.CharacterController controller;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        controller = GetComponent<Controller.CharacterController>();
+        input = GetComponent<AiInput>().InputController;
     }
 
     public void Update()
     {
-        if(checkDir(Vector2.left) || checkDir(Vector2.right))
+        if (checkDir(Vector2.left) || checkDir(Vector2.right))
         {
             StartCoroutine(Jump());
-        }      
+        }
     }
 
     IEnumerator Jump()
-    {      
-        GetComponent<Controller.CharacterController>().actionInput1 = true;
+    {
+        this.input.action1 = true;
         yield return new WaitForSeconds(0.1f);
-        GetComponent<Controller.CharacterController>().actionInput1 = false;        
+        this.input.action1 = false;
     }
+
 
     bool checkDir(Vector2 direction)
     {
@@ -38,7 +45,6 @@ public class WallDetect : MonoBehaviour
         var hit = Physics2D.Raycast(center.position, dir, dis, layersToDetect);
         if (hit.collider != null)
         {
-            print("foo");
             value = true;
         }
         return value;

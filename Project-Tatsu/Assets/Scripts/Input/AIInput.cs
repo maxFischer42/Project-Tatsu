@@ -14,7 +14,7 @@ public class AIInputs : MonoBehaviour
         InputController currentFrameInput = new InputController();
         currentFrameInput = SetDirectionInputs(currentFrameInput);
 
-        characterController.SetInputs(currentFrameInput);
+        characterController.SetInputs();
     }
 
     InputController SetDirectionInputs(InputController input)

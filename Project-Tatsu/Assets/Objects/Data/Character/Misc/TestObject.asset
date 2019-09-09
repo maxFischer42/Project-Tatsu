@@ -19,4 +19,4 @@ MonoBehaviour:
   layersToDetect:
     serializedVersion: 2
     m_Bits: 256
-  jumpForce: 80
+  jumpForce: 125

@@ -8,18 +8,18 @@ public class MovementHandler : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Controller.CharacterController controller;
+    private InputController input;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         controller = GetComponent<Controller.CharacterController>();
+        input = GetComponent<AiInput>().InputController;
     }
 
     public void MovementListener(MovementParams @params)
     {
         var direction = @params.direction;
-        var input = new InputController();
-        input.direction = direction;
-        controller.SetInputs(input);
+        this.input.direction = @params.direction;
     }
 }

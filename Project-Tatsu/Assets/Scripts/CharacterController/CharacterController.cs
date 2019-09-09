@@ -15,6 +15,9 @@ namespace Controller
         private PhysicsController physicsController;
         private ActionController actionController;
         private CharacterState.State state;
+
+        private InputController input;
+
         public bool isGrounded;
 
         void Start()
@@ -22,6 +25,7 @@ namespace Controller
             physicsController = GetComponent<PhysicsController>();
             actionController = GetComponent<ActionController>();
             state = CharacterState.State.Idle;
+            input = GetComponent<AiInput>().InputController;
         }
         /*
         //TODO create a seperate input class and import it as variable
@@ -32,14 +36,16 @@ namespace Controller
         public Vector2 movementInputs = Vector2.zero;
         public bool actionInput1 = false;
 
-        public void SetInputs(InputController inputs)
+        public void SetInputs()
         {
-            movementInputs = inputs.direction;
-            actionInput1 = inputs.action1;
+            movementInputs = input.direction;
+            actionInput1 = input.action1;
+            print("inputs : " + ("{movement: " + this.movementInputs + "} ") + ("{action1: " + this.actionInput1 + "}"));
         }
 
         public void Update()
         {
+            SetInputs();
             CheckMovement();
             isGrounded = physicsController.DetectGround();
         }
@@ -53,6 +59,7 @@ namespace Controller
             }
             if(actionInput1 && isGrounded)
             {
+                actionInput1 = false;
                 actionController.jump(data.jumpForce);
             }
         }

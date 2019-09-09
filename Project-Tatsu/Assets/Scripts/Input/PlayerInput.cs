@@ -14,7 +14,7 @@ public class PlayerInput : MonoBehaviour
         currentFrameInput = SetDirectionInputs(currentFrameInput);
         currentFrameInput = SetActionInputs(currentFrameInput);
 
-        characterController.SetInputs(currentFrameInput);
+        characterController.SetInputs();
     }
 
     InputController SetActionInputs(InputController input)
