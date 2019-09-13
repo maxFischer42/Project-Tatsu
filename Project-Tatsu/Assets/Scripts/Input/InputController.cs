@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Inputs
 {
-    public class InputController
+    public class InputController : MonoBehaviour
     {
         public Vector2 direction;
         public bool action1;

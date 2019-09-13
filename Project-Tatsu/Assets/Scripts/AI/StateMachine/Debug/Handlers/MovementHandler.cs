@@ -14,7 +14,7 @@ public class MovementHandler : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         controller = GetComponent<Controller.CharacterController>();
-        input = GetComponent<AiInput>().InputController;
+        input = GetComponent<InputController>();
     }
 
     public void MovementListener(MovementParams @params)

@@ -28,6 +28,7 @@ public class ActionController : MonoBehaviour
 
     public void jump(float force)
     {
-        physics.rigidbody.AddForce(Vector2.up * force);
+        //physics.rigidbody.AddForce(Vector2.up * force);
+        physics.rigidbody.velocity = new Vector2(physics.rigidbody.velocity.x, force);
     }
 }

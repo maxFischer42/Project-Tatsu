@@ -19,13 +19,13 @@ namespace Controller
         private InputController input;
 
         public bool isGrounded;
-
+        public bool isAI;
         void Start()
         {
+            input = GetComponent<InputController>();
             physicsController = GetComponent<PhysicsController>();
             actionController = GetComponent<ActionController>();
             state = CharacterState.State.Idle;
-            input = GetComponent<AiInput>().InputController;
         }
         /*
         //TODO create a seperate input class and import it as variable
@@ -38,7 +38,11 @@ namespace Controller
 
         public void SetInputs()
         {
-            movementInputs = input.direction;
+            if (isAI) {
+                movementInputs = input.direction;
+            } else {
+                movementInputs = input.direction;
+            }
             actionInput1 = input.action1;
             print("inputs : " + ("{movement: " + this.movementInputs + "} ") + ("{action1: " + this.actionInput1 + "}"));
         }
