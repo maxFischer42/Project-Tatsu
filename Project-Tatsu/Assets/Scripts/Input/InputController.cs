@@ -8,5 +8,6 @@ namespace Inputs
     {
         public Vector2 direction;
         public bool action1;
+        public bool action2;
     }
 }

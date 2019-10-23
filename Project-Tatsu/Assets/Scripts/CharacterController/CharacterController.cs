@@ -16,7 +16,11 @@ namespace Controller
         private ActionController actionController;
         private CharacterState.State state;
 
-        private InputController input;
+        public InputController input;
+
+        public enum NavActions { Pass, Flip, Jump, Roll}
+        public NavActions actionToPlayer;
+        public NavActions actionToNPC;
 
         public bool isGrounded;
         public bool isAI;
@@ -44,7 +48,7 @@ namespace Controller
                 movementInputs = input.direction;
             }
             actionInput1 = input.action1;
-            print("inputs : " + ("{movement: " + this.movementInputs + "} ") + ("{action1: " + this.actionInput1 + "}"));
+            //print("inputs : " + ("{movement: " + this.movementInputs + "} ") + ("{action1: " + this.actionInput1 + "}"));
         }
 
         public void Update()
@@ -65,6 +69,17 @@ namespace Controller
             {
                 actionInput1 = false;
                 actionController.jump(data.jumpForce);
+            }
+            if (isGrounded)
+            {
+                if (movementInputs.x > 0)
+                {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
+                else if(movementInputs.x < 0)
+                {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }
             }
         }
     }

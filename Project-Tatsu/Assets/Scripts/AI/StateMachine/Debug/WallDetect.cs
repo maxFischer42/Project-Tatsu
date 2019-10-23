@@ -31,6 +31,7 @@ public class WallDetect : MonoBehaviour
 
     IEnumerator Jump()
     {
+        print("theres a wall, idiot");
         this.input.action1 = true;
         yield return new WaitForSeconds(Time.deltaTime);
         this.input.action1 = false;
@@ -44,7 +45,7 @@ public class WallDetect : MonoBehaviour
         float dis = distance;
         var hit = Physics2D.Raycast(center.position, dir, dis, layersToDetect);
         if (hit.collider != null)
-        {
+        {            
             value = true;
         }
         return value;

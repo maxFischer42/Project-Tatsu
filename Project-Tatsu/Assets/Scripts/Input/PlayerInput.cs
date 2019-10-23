@@ -7,6 +7,7 @@ using Inputs;
 public class PlayerInput : MonoBehaviour
 {
     public Controller.CharacterController characterController;
+    public CombatController combatController;
 
     private void Update()
     {
@@ -14,13 +15,16 @@ public class PlayerInput : MonoBehaviour
         currentFrameInput = SetDirectionInputs(currentFrameInput);
         currentFrameInput = SetActionInputs(currentFrameInput);
 
-        characterController.SetInputs();
+        combatController.input = currentFrameInput;
+        characterController.input = currentFrameInput;
     }
 
     InputController SetActionInputs(InputController input)
     {
         bool action1 = Input.GetButtonDown("Action1");
+        bool action2 = Input.GetButtonDown("Action2");
         input.action1 = action1;
+        input.action2 = action2;
         return input;
     }
 

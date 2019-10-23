@@ -8,10 +8,17 @@ public class ActionController : MonoBehaviour
     public float horizontalModifyer = 1f;
     public float verticalModifyer = 1f;
     private PhysicsController physics;
+    private CharacterData data;
 
     void Start()
     {
         physics = gameObject.GetComponent<PhysicsController>();
+        data = GetComponent<Controller.CharacterController>().data;
+    }
+
+    private void Update()
+    {
+        horizontalModifyer = data.movement;        
     }
 
     public void moveX(float value)
