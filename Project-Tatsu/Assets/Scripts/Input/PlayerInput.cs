@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Controller;
 using Inputs;
+using Combat;
 
 public class PlayerInput : MonoBehaviour
 {

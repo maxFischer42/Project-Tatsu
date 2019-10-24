@@ -39,6 +39,7 @@ namespace Controller
         */
         public Vector2 movementInputs = Vector2.zero;
         public bool actionInput1 = false;
+        public bool actionInput2 = false;
 
         public void SetInputs()
         {
@@ -48,6 +49,7 @@ namespace Controller
                 movementInputs = input.direction;
             }
             actionInput1 = input.action1;
+            actionInput2 = input.action2;
             //print("inputs : " + ("{movement: " + this.movementInputs + "} ") + ("{action1: " + this.actionInput1 + "}"));
         }
 

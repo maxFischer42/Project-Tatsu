@@ -6,6 +6,7 @@ namespace Attack {
     {
         public enum hitboxShape { circle, box, capsule }
         public GameObject hitboxPrefab;
+        public bool doingAttack = false;
         AttackData dataObj;
         public GameObject hitBoxObject;
 
@@ -43,6 +44,10 @@ namespace Attack {
         void setTransform()
         {
             this.x = dataObj.x;
+            if(GetComponentInParent<Combat.CombatController>().getFlip() == Vector2.left)
+            {
+                this.x *= -1;
+            }
             this.y = dataObj.y;
             this.xOff = dataObj.xOff;
             this.yOff = dataObj.yOff;
@@ -84,12 +89,22 @@ namespace Attack {
 
         IEnumerator doAttack()
         {
+            doingAttack = true;
+            float flip = 1;
+            if(transform.parent.GetComponent<SpriteRenderer>().flipX)
+            {
+                flip = -1;
+            }
             hitBoxObject = (GameObject)Instantiate(hitboxPrefab, transform);
             hitBoxObject.transform.localScale = new Vector2(x, y);
+            hitBoxObject.GetComponent<HitboxHolder>().flip = flip;
+            hitBoxObject.GetComponent<HitboxHolder>().data = dataObj;
             setCollider();
             yield return new WaitForSeconds(dataObj.duration);
             Destroy(hitBoxObject.gameObject);
             yield return new WaitForSeconds(dataObj.coolDown);
+            GetComponentInParent<ControllerAnimator>().enabled = true;
+            doingAttack = false;
             //end attack
         }
 
