@@ -15,14 +15,14 @@ MonoBehaviour:
   shape: 0
   x: 0.5
   y: 0.5
-  h: 0.2
+  h: 0.5
   k: 0
-  xOff: -0.3
+  xOff: -0.4
   yOff: 0
   duration: 0.1
   coolDown: 0.2
-  damage: 1
-  knockback: {x: -6, y: 1}
-  launchDir: 25
-  effect: 0
-  effectMultiplier: 0
+  damage: 2
+  knockback: {x: -4, y: 1}
+  launchDir: 45
+  effect: 1
+  effectMultiplier: 0.4

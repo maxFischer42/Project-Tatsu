@@ -75,6 +75,17 @@ namespace Combat {
             return Vector2.left;
         }
 
+        //listeners for creating or destroying a hitbox
+        public void cBox(AttackData d)
+        {
+            hitboxHolder.createBox(d);
+        }
+        public void dBox()
+        {
+            hitboxHolder.destroyBox();
+        }
+
+
         public inputState getCurrentState()
         {
             //TODO this will probably end up pretty spaghetti so refactor later
@@ -90,7 +101,7 @@ namespace Combat {
                 } else if (currentDir.x != 0f && currentDir.y == 0f)
                 {
                     return inputState.ftilt; //forward tilt attack
-                } else if (currentDir.x == 0f && currentDir.y != 0f)
+                } else if (currentDir.y != 0f)
                 {
                     //check for u/d tilt
                     if(currentDir.y > 0f)

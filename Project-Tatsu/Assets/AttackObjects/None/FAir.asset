@@ -21,8 +21,8 @@ MonoBehaviour:
   yOff: -0.15
   duration: 0.4
   coolDown: 0.1
-  damage: 2
-  knockback: {x: 1, y: -5}
+  damage: 4
+  knockback: {x: 2, y: 5}
   launchDir: 270
-  effect: 0
-  effectMultiplier: 0
+  effect: 1
+  effectMultiplier: 1

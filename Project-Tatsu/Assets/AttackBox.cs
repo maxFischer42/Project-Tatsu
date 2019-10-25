@@ -9,6 +9,8 @@ namespace Attack {
         public bool doingAttack = false;
         AttackData dataObj;
         public GameObject hitBoxObject;
+        public GameObject currentBox;
+        public GameObject effectObj;
 
         hitboxShape shape;
         float x;
@@ -56,7 +58,6 @@ namespace Attack {
                 this.h = dataObj.h;
                 this.k = dataObj.k;
             }
-            StartCoroutine(doAttack());
         }
 
         void setCollider()
@@ -87,7 +88,7 @@ namespace Attack {
             }
         }
 
-        IEnumerator doAttack()
+        public void createBox(AttackData d)
         {
             doingAttack = true;
             float flip = 1;
@@ -98,14 +99,18 @@ namespace Attack {
             hitBoxObject = (GameObject)Instantiate(hitboxPrefab, transform);
             hitBoxObject.transform.localScale = new Vector2(x, y);
             hitBoxObject.GetComponent<HitboxHolder>().flip = flip;
-            hitBoxObject.GetComponent<HitboxHolder>().data = dataObj;
-            setCollider();
-            yield return new WaitForSeconds(dataObj.duration);
-            Destroy(hitBoxObject.gameObject);
-            yield return new WaitForSeconds(dataObj.coolDown);
+            hitBoxObject.GetComponent<HitboxHolder>().data = d;
+            currentBox = hitBoxObject;
+            setCollider();           
+        }
+
+        public void destroyBox()
+        {
+            Destroy(currentBox.gameObject);
             GetComponentInParent<ControllerAnimator>().enabled = true;
             doingAttack = false;
-            //end attack
+            if (effectObj.gameObject)
+                Destroy(effectObj.gameObject);
         }
 
         void setHit()
