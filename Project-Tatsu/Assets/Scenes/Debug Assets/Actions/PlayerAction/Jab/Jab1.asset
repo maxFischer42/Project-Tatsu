@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e481aa4a2625ed4f9e8386e75cdfa78, type: 3}
+  m_Name: Jab1
+  m_EditorClassIdentifier: 
+  hitbox: {fileID: 5724668707762980235, guid: 3051df709448f324b8d33baf74ee66bd, type: 3}
+  offset: {x: 0.2, y: 0}
+  layer: 0
+  damage: 0
+  lifetime: 0.02

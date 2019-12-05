@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CreateAssetMenu (menuName = "Assets/Combat/Input")]
-public class InputCheck : MonoBehaviour
+public class InputCheck : ScriptableObject
 {
     public string[] inputAxis;
 

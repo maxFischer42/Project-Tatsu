@@ -6,4 +6,6 @@ using UnityEngine;
 public class ActionObject : ScriptableObject
 {
     public AttackObject[] attackObjects;
+    public InputCheck actionInputs;
+    public string boolTrigger;
 }

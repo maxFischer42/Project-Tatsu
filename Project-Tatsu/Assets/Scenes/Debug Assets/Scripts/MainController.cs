@@ -29,6 +29,7 @@ public class MainController : MonoBehaviour
         CheckGround();
         CheckWall();
         Jump();
+        GetComponent<SpriteRenderer>().flipX = isFlipped;
     }
 
     public Vector2 direction;

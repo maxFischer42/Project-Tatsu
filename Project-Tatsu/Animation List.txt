@@ -1,0 +1,19 @@
+Idle
+Startup Walk
+Walk
+Pivot
+Sprint
+Jump Startup Idle
+Jump Startup Running
+Jump
+Fall
+Fall Higher Velocity
+Wall Grab
+Slide Down Wall
+Kick off wall jump
+Grapple Startup
+Grapple Hanging Idle
+Grapple Swing slow
+grapple swing medium
+Grapple Swing Fast
+Grapple Retract

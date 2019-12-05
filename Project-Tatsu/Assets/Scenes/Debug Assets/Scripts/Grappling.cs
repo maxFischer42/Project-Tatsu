@@ -14,7 +14,7 @@ public class Grappling : MonoBehaviour
     public GameObject ropeHingeAnchor;
     public DistanceJoint2D ropeJoint;
     public MainController playerMovement;
-    private bool ropeAttached;
+    public bool ropeAttached;
     private Vector2 playerPosition;
     private Rigidbody2D ropeHingeAnchorRb;
     private SpriteRenderer ropeHingeAnchorSprite;
@@ -25,8 +25,10 @@ public class Grappling : MonoBehaviour
     public float fuelRefreshRate = 0.002f;
     public float fuelDepleteRate = 0.01f;
     public Scrollbar fuelUI;
-    private Color defUI;
-    private Color emptyFuel = Color.red;
+    public Color defUI;
+    public Color emptyFuel = Color.red;
+    public Image handle;
+    private bool empty = false;
 
 
     // Start is called before the first frame update
@@ -66,15 +68,23 @@ public class Grappling : MonoBehaviour
             currentFuel += fuelRefreshRate;
         if(currentFuel > maxFuel)
         {
-            fuelUI.interactable = true;
+            empty = false;
+            isActive = true;
             currentFuel = maxFuel;
         }
-        if(!isActive)
+        if(currentFuel <= 0)
         {
-            fuelUI.interactable = false;
-        } else
+            empty = true;
+            ResetRope();
+        }
+        ColorBlock colors = new ColorBlock();
+        if(empty)
         {
-            fuelUI.interactable = true;
+            handle.color = emptyFuel;
+        }
+        else
+        {
+            handle.color = defUI;
         }
     }
 
@@ -84,6 +94,8 @@ public class Grappling : MonoBehaviour
     void Update()
     {
         UpdateUI();
+        if (empty)
+            return;
         UpdateRopePositions();
         if(Input.GetButtonDown("Action3"))
         {
