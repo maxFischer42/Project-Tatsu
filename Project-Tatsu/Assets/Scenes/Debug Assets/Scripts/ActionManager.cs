@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ActionManager : MonoBehaviour
 {
-
     public bool isCooldown;
     public bool isAttacking;
     private ActionObject previousAction;
     private Animator animator;
-    public List<Behaviour> togglableMechanics = new List<Behaviour>();  
+    public List<Behaviour> togglableMechanics = new List<Behaviour>();
+    public ActionObject prevAction;
+    public bool followUpChance;
+    public float followUp = 0.5f;
 
-    IEnumerator Cooldown()
+    public IEnumerator Cooldown()
     {
         print("Starting Cooldown...");
         yield return new WaitForSeconds(0.2f);
@@ -21,6 +23,13 @@ public class ActionManager : MonoBehaviour
         animator.SetBool("endAttack", true);
         yield return new WaitForSeconds(0.06f);
         animator.SetBool("endAttack", false);
+    }
+
+    public IEnumerator followUpChanceTimer()
+    {
+        followUpChance = true;
+        yield return new WaitForSeconds(followUp);
+        followUpChance = false;
     }
 
     private void Start()
@@ -63,14 +72,14 @@ public class ActionManager : MonoBehaviour
         Behaviour[] behaviours = togglableMechanics.ToArray();
         for (int i = 0; i < behaviours.Length; i++)
         {
-            behaviours[i].enabled = state;
+            //behaviours[i].enabled = state;
         }       
     }
 
     public void PerformAction(string triggerName)
     {
         if (isAttacking || isCooldown)
-            return;
+            return;        
         isAttacking = true;
         isCooldown = true;
         animator.SetBool(triggerName, true);
@@ -107,5 +116,6 @@ public class ActionManager : MonoBehaviour
     {
         //isAttacking = false;
         StartCoroutine(Cooldown());
+        StartCoroutine(followUpChanceTimer());
     }
 }   

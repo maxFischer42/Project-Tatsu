@@ -3,38 +3,42 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Prime31;
 
-[RequireComponent(typeof(MainController))]
 public class Grappling : MonoBehaviour
 {
+    //
 
     public Vector2 ropeDirection;
-    private MainController controller;
+    private CharacterController2D controller;
 
     public GameObject ropeHingeAnchor;
     public DistanceJoint2D ropeJoint;
-    public MainController playerMovement;
+
     public bool ropeAttached;
+
     private Vector2 playerPosition;
     private Rigidbody2D ropeHingeAnchorRb;
     private SpriteRenderer ropeHingeAnchorSprite;
+    
     public float xLimiter = 4;
     public float yDistance = 7.5f;
     public float maxFuel;
+    
     private float currentFuel;
     public float fuelRefreshRate = 0.002f;
     public float fuelDepleteRate = 0.01f;
+    
     public Scrollbar fuelUI;
     public Color defUI;
     public Color emptyFuel = Color.red;
     public Image handle;
     private bool empty = false;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<MainController>();
+        controller = GetComponent<CharacterController2D>();
         defUI = fuelUI.colors.normalColor;
         currentFuel = maxFuel;
     }
@@ -106,7 +110,6 @@ public class Grappling : MonoBehaviour
                 aimAngle = Mathf.PI * 2 + aimAngle;
             }
 
-            // 4
             var aimDirection = Quaternion.Euler(0, 0, aimAngle * Mathf.Rad2Deg) * Vector2.right;
             if (facingDirection == Vector3.zero)
                 return;
@@ -179,7 +182,9 @@ public class Grappling : MonoBehaviour
 
     private void HandleInput(Vector2 aimDirection)
     {       
+        print("handling input");
         if (ropeAttached) {
+            print("resetting rope");
             ResetRope();
             return;
         }
@@ -195,6 +200,7 @@ public class Grappling : MonoBehaviour
                 ropeJoint.distance = Vector2.Distance(playerPosition, hit.point);
                 ropeJoint.enabled = true;
                 ropeHingeAnchorSprite.enabled = true;
+                handleRope(true);
             }
         }
         else
@@ -205,8 +211,27 @@ public class Grappling : MonoBehaviour
         }        
     }
 
+    public void handleRope(bool state) {
+        Rigidbody2D rig = transform.GetComponent<Rigidbody2D>();
+        DemoScene dem = transform.GetComponent<DemoScene>();
+        dem.enabled = !state;
+        switch(state) {
+            case true:
+                rig.bodyType = RigidbodyType2D.Dynamic;
+                break;
+            case false:
+                rig.bodyType = RigidbodyType2D.Kinematic;
+                //rig.velocity = Vector2.zero; take the velocity from the dynamic rigidbody and translate it to a "move" function
+                controller.move(rig.velocity);
+                rig.velocity = Vector2.zero;
+                break;
+        }
+    }
+
     private void ResetRope()
     {
+        handleRope(false);
+
         ropeJoint.enabled = false;
         ropeAttached = false;       
         ropeRenderer.positionCount = 2;

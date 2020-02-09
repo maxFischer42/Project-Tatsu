@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00545d76d4754b04f99b2f9f1de56bfa, type: 3}
+  m_Name: DebugAction3
+  m_EditorClassIdentifier: 
+  _name: Debug3
+  _tag: 003
+  _group: player
+  ActionTypes:
+    _movementType: 0
+    _movementDefinition:
+      _xMovement: 0
+      _yMovement: 0
+      _xMultiplier: 0
+      _yMultiplier: 0
+    launchDirection: {x: 0.15, y: -0.8}
+    _launchMultiplierCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  hitbox: {fileID: 9073710367014419818, guid: fef66503dd5011a42b1d762d5f92c808, type: 3}
+  lifeTime: 0.3
+  followUp: {fileID: 11400000, guid: 225028b4dc77ffc4f8a07c92ae2c7a56, type: 2}
+  followUpTimer: 0.01
+  coolDown: 1
+  damage: 4
