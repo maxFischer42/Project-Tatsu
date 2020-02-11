@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00545d76d4754b04f99b2f9f1de56bfa, type: 3}
-  m_Name: DebugAction2
+  m_Name: DebugSpecial2
   m_EditorClassIdentifier: 
-  _name: Debug2
-  _tag: 002
+  _name: Debug5
+  _tag: 006
   _group: player
   ActionTypes:
-    _movementType: 0
+    _movementType: 3
     _movementDefinition:
       _xMovement: 0
       _yMovement: 0
       _xMultiplier: 0
       _yMultiplier: 0
-    launchDirection: {x: 0.1, y: 0.2}
+    launchDirection: {x: 0, y: -2}
     _launchMultiplierCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0
@@ -40,16 +40,16 @@ MonoBehaviour:
         value: 1
         inSlope: 0
         outSlope: 0
-        tangentMode: 0
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  hitbox: {fileID: 9073710367014419818, guid: a8f1c68829e0b5640a7ee030cb642228, type: 3}
+  hitbox: {fileID: 9073710367014419818, guid: 41654ecafefecfd40b8fb630a89d5b53, type: 3}
   lifeTime: 0.1
-  followUp: {fileID: 11400000, guid: f0e4ded29b85cb44cbc11cab04e22a7c, type: 2}
-  followUpTimer: 0.25
-  coolDown: 0.1
-  damage: 5
+  followUp: {fileID: 11400000, guid: 225028b4dc77ffc4f8a07c92ae2c7a56, type: 2}
+  followUpTimer: 0.2
+  coolDown: 0.05
+  damage: 10

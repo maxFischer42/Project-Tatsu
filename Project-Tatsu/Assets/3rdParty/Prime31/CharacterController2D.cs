@@ -291,6 +291,9 @@ public class CharacterController2D : MonoBehaviour
 				onControllerCollidedEvent( _raycastHitsThisFrame[i] );
 		}
 
+	
+		transform.position = new Vector2((float)Decimal.Round((decimal)transform.position.x, 2), (float)Decimal.Round((decimal)transform.position.y, 2));
+
 		ignoreOneWayPlatformsThisFrame = false;
 	}
 

@@ -50,6 +50,6 @@ MonoBehaviour:
   hitbox: {fileID: 9073710367014419818, guid: 64f44224d4d3fc543a950f1171ca63d5, type: 3}
   lifeTime: 0.1
   followUp: {fileID: 11400000, guid: df09dfb19fb740f4da226f8e2a732915, type: 2}
-  followUpTimer: 0.6
-  coolDown: 0.25
-  damage: 1
+  followUpTimer: 0.3
+  coolDown: 0.1
+  damage: 3

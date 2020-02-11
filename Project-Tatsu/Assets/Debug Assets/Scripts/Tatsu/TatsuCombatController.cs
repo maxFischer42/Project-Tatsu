@@ -34,27 +34,27 @@ namespace Tatsu {
 
         public float grappleLaunchMultiplier = 2f;
         
-        public void Action(TatsuAction _action) {
 
-            var newAction = _action;
+        //Perform the given _action TatsuAction
+        public void Action(TatsuAction _action) {
+            //don't continue if other actions are currently taking place
             if(isAction || onCooldown)
                 return;
-//            print("Performing Action " + newAction._name );
-            isAction = true;
-            string myName = newAction._name;
-            string myTag = newAction._tag;
 
-            GameObject hitBoxObject = (GameObject)Instantiate(newAction.hitbox, transform);
-            Destroy(hitBoxObject, newAction.lifeTime);
+            isAction = true;
+            string myName = _action._name;
+            string myTag = _action._tag;
+
+            GameObject hitBoxObject = (GameObject)Instantiate(_action.hitbox, transform);
+            Destroy(hitBoxObject, _action.lifeTime);
 
             hitBoxObject.name = myTag;
-            hitBoxObject.GetComponent<TatsuHitbox>().setTag(myTag, newAction.ActionTypes);
-            previousAction = newAction;
+            hitBoxObject.GetComponent<TatsuHitbox>().setTag(myTag, _action.ActionTypes);
+            previousAction = _action;
             playerDemo.PlayAnimation(myName);
-//            print("action");
-            actionCountdown = newAction.followUpTimer;
+            actionCountdown = _action.followUpTimer;
             onCooldown = true;
-            _cooldown = newAction.coolDown;
+            _cooldown = _action.coolDown;
         }        
 
         private void Update() {

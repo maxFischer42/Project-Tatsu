@@ -99,6 +99,16 @@ public class DemoScene : MonoBehaviour
 			return;
 		if(up) {
 			combatController.doGrappleLaunch();
+		} else {
+			TatsuAction action = actions.special1;
+			if(prevAction == actions.special1 && !combatController.onCooldown) {
+				print("special2");
+				action = actions.special2;
+			} else if (prevAction == actions.special2 && !combatController.onCooldown && aOne) {
+				action = actions.jab;
+			}
+			prevAction = action;
+			combatController.Action(action);
 		}
 	}
 
@@ -183,5 +193,6 @@ public class myActions {
 	public TatsuAction jab;
 	public TatsuAction jab2;
 	public TatsuAction jab3;
-
+	public TatsuAction special1;
+	public TatsuAction special2;
 }

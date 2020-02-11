@@ -51,5 +51,5 @@ MonoBehaviour:
   lifeTime: 0.3
   followUp: {fileID: 11400000, guid: 225028b4dc77ffc4f8a07c92ae2c7a56, type: 2}
   followUpTimer: 0.01
-  coolDown: 1
-  damage: 4
+  coolDown: 0.5
+  damage: 8

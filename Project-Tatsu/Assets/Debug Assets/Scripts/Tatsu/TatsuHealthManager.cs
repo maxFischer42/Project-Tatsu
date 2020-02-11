@@ -34,7 +34,7 @@ namespace Tatsu{
 
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             GetComponent<Rigidbody2D>().velocity = launchDirection * knockbackMultiplier;
-           // _parent.GetComponent<CharacterController2D>().move(launchDirection * knockbackMultiplier/3);
+           _parent.GetComponent<CharacterController2D>().move(launchDirection);
                                               
         }
 
